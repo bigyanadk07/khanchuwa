@@ -1,0 +1,47 @@
+/* Main Color Palettes */
+
+:root {
+    --main-color: #A8BBA3;
+    --secondary-color: #B87C4C;
+    --accent-color: #F7F1DE ;
+    --ter-color: #B87C4C;
+    --background-color: white;
+    --text-color: black ;
+
+}
+
+/* Colors for Tailwind */
+
+.main-color {
+    background-color: var(--main-color);
+    color: black
+}
+
+.secondary-color {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.accent-color {
+    background-color: var(--accent-color);
+    color: black;
+}
+
+.ter-color {
+    background-color: var(--ter-color);
+    color: white;
+}
+
+.background-color {
+    background-color: var(--background-color);
+    color: black;
+}
+
+/* Hero Section Image Background */
+
+.homeImage{
+    background-image: url("../../public/images/other/hero-image-4.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
