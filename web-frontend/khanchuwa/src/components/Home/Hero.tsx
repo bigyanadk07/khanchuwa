@@ -38,16 +38,17 @@ const Hero: React.FC = () => {
           transition={{ delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <button className="flex cursor-pointer items-center justify-center bg-white text-blue-700 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
-            <IoLogoGooglePlaystore className="mr-2 text-2xl" />PlayStore
-          </button>
-          <button className="flex text-white cursor-pointer items-center justify-center border-2 border-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-blue-700 transition transform hover:scale-105 shadow-lg">
+          <button className="flex bg-orange-500 text-white cursor-pointer items-center justify-center px-4 py-4 rounded-2xl text-lg font-semibold hover:bg-white hover:text-blue-700 transition transform hover:scale-105 shadow-lg">
             <FaAppStore className="mr-2 text-2xl" />AppStore
           </button>
+          <button className="flex cursor-pointer items-center justify-center bg-white text-black px-2 py-4 rounded-2xl text-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
+            <IoLogoGooglePlaystore className="mr-2 text-2xl" />GooglePlay
+          </button>
+
         </motion.div>
       </div>
 
-      {/* Decorative blurred circles */}
+      {/* Decorative blurred circles */}  
       <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl opacity-40"></div>
       <div className="absolute -top-16 -left-16 w-72 h-72 bg-indigo-400 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
     </section>

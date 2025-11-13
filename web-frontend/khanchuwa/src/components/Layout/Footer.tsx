@@ -1,6 +1,10 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
 import React from 'react'
 
+
+// Image Import
+import KhanchuwaLogo from '/images/logos/khanchuwa-logo.png';
+
 const Footer:React.FC = () => {
   return (
     <div>
@@ -8,7 +12,11 @@ const Footer:React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="text-2xl font-bold  mb-4">Khanchuwa</div>
+              <div className="text-2xl font-bold  mb-4">
+            <div className='flex justify-center'>
+              <img src={KhanchuwaLogo} alt="Logo" className='w-16'/>
+            </div >
+            <p className='text-center bg-linear-to-r from-emerald-600 to-teal-600 bg-clip-text'>Khanchuwa</p></div>
               <p className=" mb-4">Your ultimate companion to discover, bookmark, and review the best local food spots.</p>
             </div>
             
@@ -52,6 +60,7 @@ const Footer:React.FC = () => {
           </div>
           
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+
             <p className=" text-sm mb-4 md:mb-0">
               © 2024 Khanchuwa. All Rights Reserved.
             </p>
