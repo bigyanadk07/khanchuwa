@@ -1,2 +1,13 @@
 @import "tailwindcss";
 @import "./styles/global.css";
+
+/* Font */
+
+ @font-face {
+    font-family: 'Cinzel';
+    src: url('/fonts/Cinzel-Regular.otf') format('opentype');
+  }
+
+.Cinzel{
+    font-family: 'Cinzel', serif;
+}

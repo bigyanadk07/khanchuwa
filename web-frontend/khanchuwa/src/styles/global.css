@@ -45,3 +45,15 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+/* Fonts */
+/* Font */
+
+ @font-face {
+    font-family: 'Cinzel';
+    src: url('/fonts/Cinzel-Regular.otf') format('opentype');
+  }
+
+.Cinzel{
+    font-family: 'Cinzel', serif;
+}

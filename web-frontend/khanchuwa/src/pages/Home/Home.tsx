@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 // Component Imports
 import Hero from '../../components/Home/Hero'
@@ -33,6 +33,10 @@ import type { CarouselItem } from '../../components/Home/Carousel';
   ];
 
 const Home:React.FC = () => {
+  
+    useEffect(()=>{
+      window.scrollTo(0,0);
+    })
   return (
     <div>
       <Hero/>

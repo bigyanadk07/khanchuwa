@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -109,13 +109,15 @@ const ContactSection: React.FC = () => {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-orange-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
-              >
-                <Send className="w-5 h-5" />
-                <span>Send Message</span>
-              </button>
+              <div className='flex justify-center'>
+                <button
+                          type="submit"
+                          className="w-full bg-orange-500 text-white py-4 px-6 rounded-xl font-semibold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl  space-x-2"
+                        >
+                          <Send className="w-5 h-5" />
+                          <span>Send Message</span>
+                        </button>
+              </div>
             </form>
           </div>
         </div>

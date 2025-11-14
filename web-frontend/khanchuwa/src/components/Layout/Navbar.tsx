@@ -1,12 +1,11 @@
 import React from 'react';
-import { X, Menu, ChevronDown } from 'lucide-react';
+import { X, Menu, } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import KhanchuwaLogo from '/images/logos/khanchuwa-logo.png';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <nav className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
@@ -20,7 +19,7 @@ const Navbar: React.FC = () => {
                 alt="Khanchuwa Logo" 
                 className='w-12 h-12 transition-transform duration-300 group-hover:scale-105' 
               />
-              <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-linear-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 Khanchuwa
               </span>
             </Link>
@@ -36,27 +35,11 @@ const Navbar: React.FC = () => {
             </Link>
             <div 
               className="relative"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              <button className="px-4 py-2 text-gray-700 hover:text-emerald-600 transition-all duration-300 rounded-lg hover:bg-emerald-50 font-medium flex items-center space-x-1">
+              <Link to="/features" className="px-4 py-2 text-gray-700 hover:text-emerald-600 transition-all duration-300 rounded-lg hover:bg-emerald-50 font-medium flex items-center space-x-1">
                 <span>Features</span>
-                <ChevronDown size={16} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                  <Link to="/features#analytics" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                    Analytics
-                  </Link>
-                  <Link to="/features#security" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                    Security
-                  </Link>
-                  <Link to="/features#integration" className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
-                    Integration
-                  </Link>
-                </div>
-              )}
+              </Link>
+
             </div>
             <Link 
               to="/contact" 
@@ -68,10 +51,10 @@ const Navbar: React.FC = () => {
           
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <button className="px-6 py-2.5 text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium rounded-lg hover:bg-gray-50">
+            <button className="cursor-pointer px-6 py-2.5 text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium rounded-lg hover:bg-gray-50">
               Sign In
             </button>
-            <button className="bg-orange-500 text-white px-6 py-2.5 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
+            <button className="cursor-pointer bg-orange-500 text-white px-6 py-2.5 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
               Get Started
             </button>
           </div>
