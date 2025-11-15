@@ -11,6 +11,7 @@ import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
 import Features from './pages/Features/Features'
+import SignIn from './pages/Auth/Login'
 
 
 const App:React.FC = () => {
@@ -23,6 +24,7 @@ const App:React.FC = () => {
           <Route path="/about" element={<About/>} />
           <Route path="/contact" element={<Contact/>} />
           <Route path="/features" element={<Features/>} />
+          <Route path="/signin" element={<SignIn/>} />
         </Routes>
         <Footer/>
       </Router>

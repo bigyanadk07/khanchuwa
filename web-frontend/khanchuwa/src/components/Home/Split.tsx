@@ -6,7 +6,7 @@ import FoodImage from '/images/screen/split-1.png';
 
 const FoodTrailSplitSection: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
       <div className="mx-40 w-full overflow-hidden">
         <div className="flex flex-col lg:flex-row">
           {/* Text Content Section */}

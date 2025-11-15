@@ -51,9 +51,9 @@ const Navbar: React.FC = () => {
           
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <button className="cursor-pointer px-6 py-2.5 text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium rounded-lg hover:bg-gray-50">
+            <Link to="/signin" className="cursor-pointer px-6 py-2.5 text-gray-700 hover:text-emerald-600 transition-all duration-300 font-medium rounded-lg hover:bg-gray-50">
               Sign In
-            </button>
+            </Link>
             <button className="cursor-pointer bg-orange-500 text-white px-6 py-2.5 rounded-xl font-medium hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
               Get Started
             </button>
