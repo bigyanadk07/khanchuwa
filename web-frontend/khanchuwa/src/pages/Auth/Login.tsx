@@ -12,12 +12,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-svh flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcome back</h2>
-          <p className="mt-3 text-sm text-gray-600">Sign in to your account</p>
+          <h2 className=" text-3xl font-bold text-gray-900">Welcome back</h2>
+          <p className=" text-sm text-gray-600">Sign in to your account</p>
         </div>
 
         {/* Login Form */}
