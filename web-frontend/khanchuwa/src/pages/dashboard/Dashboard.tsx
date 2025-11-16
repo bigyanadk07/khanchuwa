@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Dashboard:React.FC = () => {
+
+  const [user,setUser] = useState('Bigyan Adhikari');
+
   return (
-    <div>Dashboard</div>
+    <div>Welcome to Dashboard, {user}</div>
   )
 }
 
