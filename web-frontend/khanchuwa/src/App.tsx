@@ -16,6 +16,7 @@ import Contact from './pages/Contact/Contact'
 import Features from './pages/Features/Features'
 import SignIn from './pages/Auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
+import SignUp from './pages/Auth/SignUp'
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -33,8 +34,9 @@ const AppContent: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/features" element={<Features />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
 
-        {/* 🔐 Protected Route */}
+    {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={
