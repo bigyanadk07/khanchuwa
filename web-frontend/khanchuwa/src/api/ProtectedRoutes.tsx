@@ -1,13 +1,23 @@
-// src/api/ProtectedRoute.tsx
+// src/components/ProtectedRoute.tsx
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+interface ProtectedRouteProps {
+  children: JSX.Element;
+  fallbackPath?: string;
+}
+
+const ProtectedRoute = ({ 
+  children, 
+  fallbackPath = "/signin" 
+}: ProtectedRouteProps) => {
   const { isAuthenticated } = useAuth();
+  const location = useLocation();
 
   if (!isAuthenticated) {
-    return <Navigate to="/signin" replace />;
+    // Redirect to signin page with return url
+    return <Navigate to={fallbackPath} state={{ from: location }} replace />;
   }
 
   return children;
