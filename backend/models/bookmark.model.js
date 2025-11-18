@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const BookmarkSchema = new mongoose.Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-  location: [{ latitude: { type: Number, required: true }, longitude: { type: Number, required: true } }],
+  place_id: [{ type: mongoose.Schema.Types.ObjectId, required: true, ref:'Place'}],
 });
 module.exports = mongoose.model('Bookmark', BookmarkSchema)

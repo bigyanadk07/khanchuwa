@@ -1,12 +1,12 @@
 const Bookmark = require('../models/bookmark.model');
 
 const addUserBookmark = async (req, res) => {
-  const { user_id, latitude, longitude } = req.body;
+  const { user_id, place_id } = req.body;
   try {
-    const bookmark = await Bookmark.create({ user_id, location: [{ latitude, longitude }] });
+    const bookmark = await Bookmark.create({ user_id, place_id });
     res.status(201).json({
       user_id: bookmark.user_id,
-      location: bookmark.location,
+      place_id: bookmark.place_id,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -14,16 +14,16 @@ const addUserBookmark = async (req, res) => {
 };
 
 const updateUserBookmark = async (req, res) => {
-  const { user_id, latitude, longitude } = req.body;
+  const { user_id, place_id} = req.body;
   try {
     const bookmark = await Bookmark.findOne({ user_id });
     if (!bookmark) throw new Error('User bookmark does not exists.');
-    bookmark.location.push({latitude, longitude})
+    bookmark.location.push(place_id)
     await bookmark.save();
     res.status(201).json({
         message: 'Bookmark updated successfully.', 
         user_id: bookmark.user_id,
-        locations: bookmark.location
+        place_id: bookmark.place_id
     })
   } catch (error) {
     res.status(500).json({ message: error.message });
