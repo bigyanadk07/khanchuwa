@@ -61,13 +61,11 @@ const SignUp: React.FC = () => {
       }
 
       console.log("Attempting signup request...");
-      const data = await signupRequest({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password
-      });
-
+        const data = await signupRequest({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          password: formData.password
+        });
       console.log("Signup response received:", data);
 
       // Validate response
