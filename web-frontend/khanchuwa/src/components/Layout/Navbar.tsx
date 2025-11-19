@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Menu, LogOut, User } from 'lucide-react';
+import { X, Menu, LogOut, User, Square } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import KhanchuwaLogo from '/images/logos/khanchuwa-logo.png';
@@ -122,8 +122,16 @@ const Navbar: React.FC = () => {
                       className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-50 transition-all duration-300"
                       onClick={() => setProfileDropdownOpen(false)}
                     >
-                      <User size={16} />
+                      <Square size={16} />
                       <span>Dashboard</span>
+                    </Link>
+                    <Link
+                      to="/profile"
+                      className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-50 transition-all duration-300"
+                      onClick={() => setProfileDropdownOpen(false)}
+                    >
+                      <User size={16} />
+                      <span>Profile</span>
                     </Link>
                     <button
                       onClick={handleLogout}

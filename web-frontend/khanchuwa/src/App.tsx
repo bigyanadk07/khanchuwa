@@ -17,6 +17,7 @@ import Features from './pages/Features/Features'
 import SignIn from './pages/Auth/Login'
 import Dashboard from './pages/dashboard/Dashboard'
 import SignUp from './pages/Auth/SignUp'
+import Profile from './pages/dashboard/Profile'
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -45,7 +46,13 @@ const AppContent: React.FC = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/profile" element={
+        <ProtectedRoute>
+          <Profile/>
+        </ProtectedRoute>
+        } />
       </Routes>
+
 
       {!hideFooter && <Footer />}
     </>
