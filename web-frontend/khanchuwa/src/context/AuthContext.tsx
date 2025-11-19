@@ -1,5 +1,6 @@
 // src/context/AuthContext.tsx
-import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import type ReactNode from "react";
 
 interface User {
   id?: string;
@@ -20,6 +21,7 @@ interface AuthContextType {
   login: (authData: { token: string; user?: User }) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  loading: boolean; // NEW
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -27,19 +29,22 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [authData, setAuthData] = useState<AuthData>({
     user: null,
-    token: null
+    token: null,
   });
 
-  // Initialize from localStorage on mount
+  const [loading, setLoading] = useState(true); // NEW
+
   useEffect(() => {
     const storedAuth = localStorage.getItem("auth");
+
     if (storedAuth) {
       try {
         const parsedAuth = JSON.parse(storedAuth);
+
         if (parsedAuth.token) {
           setAuthData({
             user: parsedAuth.user || null,
-            token: parsedAuth.token
+            token: parsedAuth.token,
           });
         }
       } catch (error) {
@@ -47,15 +52,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         localStorage.removeItem("auth");
       }
     }
+
+    setLoading(false); // IMPORTANT
   }, []);
 
   const login = (authData: { token: string; user?: User }) => {
     const userData = authData.user || { email: "user@example.com" };
+
     const newAuthData = {
       user: userData,
-      token: authData.token
+      token: authData.token,
     };
-    
+
     setAuthData(newAuthData);
     localStorage.setItem("auth", JSON.stringify(newAuthData));
   };
@@ -73,6 +81,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         login,
         logout,
         isAuthenticated: !!authData.token,
+        loading, // NEW
       }}
     >
       {children}

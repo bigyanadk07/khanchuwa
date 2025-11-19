@@ -12,11 +12,19 @@ const ProtectedRoute = ({
   children, 
   fallbackPath = "/signin" 
 }: ProtectedRouteProps) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 
+  // Wait while AuthProvider loads localStorage
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center text-gray-600">
+        Loading...
+      </div>
+    );
+  }
+
   if (!isAuthenticated) {
-    // Redirect to signin page with return url
     return <Navigate to={fallbackPath} state={{ from: location }} replace />;
   }
 

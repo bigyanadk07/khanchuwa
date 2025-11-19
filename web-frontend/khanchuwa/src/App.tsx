@@ -38,7 +38,7 @@ const AppContent: React.FC = () => {
 
     {/* Protected Routes */}
         <Route
-          path="/dashboard"
+          path="/dashboard/*"
           element={
             <ProtectedRoute>
               <Dashboard />
