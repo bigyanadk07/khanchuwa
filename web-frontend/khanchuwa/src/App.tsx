@@ -22,12 +22,14 @@ import Profile from './pages/dashboard/Profile'
 const AppContent: React.FC = () => {
   const location = useLocation();
 
-  const hiddenPaths = ['/signin'];
-  const hideFooter = hiddenPaths.includes(location.pathname);
+  const hiddenPathsFooter = ['/signin','/profile', '/dashboard','/dashboard/places','/dashboard/users'];
+  const hiddenPathsNavbar = ['/dashboard','/dashboard/places','/dashboard/users'];
+  const hideFooter = hiddenPathsFooter.includes(location.pathname);
+  const hideNavbar = hiddenPathsNavbar.includes(location.pathname);
 
   return (
     <>
-      <Navbar />
+      {!hideNavbar && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
