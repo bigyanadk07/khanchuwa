@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
+  upload,
   addPlace,
   updatePlace,
   getPlaceByUser,
@@ -14,7 +15,7 @@ const {
   getAllComment,
 } = require('../controllers/place.controller');
 
-router.post('/add', addPlace);
+router.post('/add', upload, addPlace);
 router.put('/update/:place_id', updatePlace);
 router.get('/user/:user_id', getPlaceByUser);
 router.get('/:place_id', getPlace);

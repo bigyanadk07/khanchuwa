@@ -20,5 +20,6 @@ const PlaceSchema = new mongoose.Schema({
       comment: { type: String, required: true },
     },
   ],
+  displayPictureKeys: [{type: String, required:true}]
 });
 module.exports = mongoose.model('Place', PlaceSchema);
