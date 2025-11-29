@@ -16,7 +16,7 @@ const {
 } = require('../controllers/place.controller');
 
 router.post('/add', upload, addPlace);
-router.put('/update/:place_id', updatePlace);
+router.put('/update/:place_id', upload, updatePlace);
 router.get('/user/:user_id', getPlaceByUser);
 router.get('/:place_id', getPlace);
 router.get('/', getAllPlace);

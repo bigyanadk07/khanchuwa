@@ -47,21 +47,37 @@ const getDisplayPictureUrl = async (display_picture_keys) => {
 }
 
 
-const updatePlace = async (req, res) => {
+
+const updatePlace  = async (req, res) => {
   const { place_id } = req.params;
   const { latitude, longitude, name, phone, description } = req.body;
+  const files = req.files || [];
 
   try {
-    const updatedPlace = await Place.findByIdAndUpdate(
-      place_id,
-      {
-        ...(latitude && longitude && { location: { latitude, longitude } }),
-        ...(name && { name }),
-        ...(phone && { phone }),
-        ...(description && { description }),
-      },
-      { new: true } // return updated document
-    );
+    // Build the update object conditionally
+    const updateFields = {
+      ...(latitude && longitude && { location: { latitude, longitude } }),
+      ...(name && { name }),
+      ...(phone && { phone }),
+      ...(description && { description }),
+    };
+
+    // If new images were uploaded, upload them and replace displayPictureKeys
+    if (files.length > 0) {
+      const displayPictureKeys = await Promise.all(
+        files.map(async (file) => await uploadMediaToBucket(file.buffer))
+      );
+
+      if (!displayPictureKeys || displayPictureKeys.length === 0) {
+        throw new Error('error in processing images');
+      }
+
+      updateFields.displayPictureKeys = displayPictureKeys;
+    }
+
+    const updatedPlace = await Place.findByIdAndUpdate(place_id, updateFields, {
+      new: true, // return updated document
+    });
 
     if (!updatedPlace) {
       return res.status(404).json({ message: 'Place not found.' });
@@ -73,13 +89,13 @@ const updatePlace = async (req, res) => {
       name: updatedPlace.name,
       phone: updatedPlace.phone,
       description: updatedPlace.description,
+      displayPictureKeys: updatedPlace.displayPictureKeys,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-//this api can be used to reward those user with high engagement. may not be required in frontend.
 const getPlaceByUser = async (req, res) => {
   const { user_id } = req.params;
 

@@ -10,6 +10,9 @@ const authRoutes = require('./routes/auth.route');
 const bookmarkRoutes = require('./routes/bookmark.route');
 const placeRoutes = require('./routes/place.route')
 
+//auth middleware
+const {validateToken} = require('./middleware/auth.middleware')
+
 // Config Initialization
 dotenv.config();
 connectDB();
@@ -31,6 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+
+app.use(validateToken)
 app.use('/api/bookmark', bookmarkRoutes)
 app.use('/api/place', placeRoutes);
 
