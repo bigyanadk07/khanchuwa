@@ -96,21 +96,30 @@ const updatePlace  = async (req, res) => {
   }
 };
 
+//this api can be use to reward those user with high engagement
 const getPlaceByUser = async (req, res) => {
-  const { user_id } = req.params;
-
   try {
-    const places = await Place.find({ user_id });
+    const result = await Place.aggregate([
+      {
+        $group: {
+          _id: "$user_id",
+          place_ids: { $push: "$_id" }
+        }
+      }
+    ]);
 
-    if (!places || places.length === 0) {
-      return res.status(404).json({ message: 'No places found for this user.' });
-    }
+    // Convert to desired format
+    const formatted = {};
+    result.forEach(item => {
+      formatted[item._id] = item.place_ids;
+    });
 
-    res.status(200).json(places);
+    res.status(200).json(formatted);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 const getPlace = async (req, res) => {
   const { place_id } = req.params;
